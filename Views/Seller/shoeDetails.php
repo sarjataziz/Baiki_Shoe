@@ -16,6 +16,7 @@ $shoeType = getAllShoe();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Shoe Details</title>
 </head>
 
@@ -66,24 +67,24 @@ $shoeType = getAllShoe();
             </tbody>
         </table>
         <script>
-        const searchInput = document.getElementById('search-input');
-        const shoeTable = document.getElementById('shoe-table');
+            const searchInput = document.getElementById('search-input');
+            const shoeTable = document.getElementById('shoe-table');
 
-        searchInput.addEventListener('keyup', function() {
-            const searchText = searchInput.value.toLowerCase();
+            searchInput.addEventListener('keyup', function() {
+                const searchText = searchInput.value.toLowerCase();
 
-            const shoeRows = shoeTable.querySelectorAll('.shoe-row');
-            shoeRows.forEach(function(row) {
-                const name = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
-                const category = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+                const shoeRows = shoeTable.querySelectorAll('.shoe-row');
+                shoeRows.forEach(function(row) {
+                    const name = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                    const category = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
 
-                if (name.includes(searchText) || category.includes(searchText)) {
-                    row.style.display = 'table-row';
-                } else {
-                    row.style.display = 'none';
-                }
+                    if (name.includes(searchText) || category.includes(searchText)) {
+                        row.style.display = 'table-row';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
             });
-        });
         </script>
     </div>
 </body>
