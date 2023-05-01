@@ -1,14 +1,14 @@
-<?php 
-    session_start();
-    if(!isset($_SESSION['username'])){
-        header("Location: login.php");
-    }
-    
-    include './adminNav.php';
-    include '../../Controllers/shoeController.php';
-    include '../../Controllers/shoeTypeController.php';
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+}
 
-    $shoes = getAllShoeTypes();
+include './adminNav.php';
+include '../../Controllers/shoeController.php';
+include '../../Controllers/shoeTypeController.php';
+
+$shoes = getAllShoeTypes();
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +25,8 @@
     <div class="container">
         <h1 align="center">Add Shoes</h1>
         <h5 style="color: red;"><?php echo $db_error; ?></h5>
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+
             <fieldset>
                 <legend>Details</legend>
                 <table align="center">
@@ -41,10 +42,10 @@
                             <select name="shoe_id" id="shoe_id">
                                 <option disabled selected value="">Select Shoe Type</option>
                                 <?php
-                                foreach($shoes as $shoe){
-                                    echo "<option value='".$shoe['shoe_type_id']."'>".$shoe['shoes_type']."</option>";
+                                foreach ($shoes as $shoe) {
+                                    echo "<option value='" . $shoe['shoe_type_id'] . "'>" . $shoe['shoes_type'] . "</option>";
                                 }
-                            ?>
+                                ?>
                             </select>
                         </td>
                     </tr>
@@ -103,6 +104,7 @@
             </fieldset>
         </form>
     </div>
+    <script src="../../JavaScript/addShoe.js"></script>
 
 </body>
 
