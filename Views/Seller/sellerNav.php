@@ -50,13 +50,11 @@
         <nav>
             <ul>
                 <li><a href="./dashboard.php">Dashboard</a></li>
-                <li><a href="./userDetails.php">User Details</a></li>
                 <li><a href="./viewProfile.php">View Profile</a></li>
                 <li><a href="./editProfile.php">Edit Profile</a></li>
                 <li><a href="../../Controllers/logoutController.php">Logout</a></li>
                 <li><a href="./shoeDetails.php">Shoes Details</a></li>
                 <li><a href="./sockDetails.php">Socks Details</a></li>
-                <li><a href="./editCategory.php">Edit Category</a></li>
                 <li><a href="./addShoe.php">Add Shoes</a></li>
                 <li><a href="./addSocks.php">Add Socks</a></li>
             </ul>

@@ -1,5 +1,6 @@
-<?php 
-require_once '../../Controllers/shoeTypeController.php'; 
+<?php
+session_start();
+require_once '../../Controllers/shoeTypeController.php';
 include './adminNav.php';
 ?>
 <!DOCTYPE html>

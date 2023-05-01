@@ -48,23 +48,25 @@
 </head>
 
 <body>
-<div class="navbar">
-    <h2>Welcome <?php echo $_SESSION["username"] ?></h2>
-    <nav>
-        <ul>
-            <li><a href="./dashboard.php">Dashboard</a></li>
-            <li><a href="./userDetails.php">User Details</a></li>
-            <li><a href="./viewProfile.php">View Profile</a></li>
-            <li><a href="./editProfile.php">Edit Profile</a></li>
-            <li><a href="../../Controllers/logoutController.php">Logout</a></li>
-            <li><a href="./shoeDetails.php">Shoes Details</a></li>
-            <li><a href="./sockDetails.php">Socks Details</a></li>
-            <li><a href="./addShoe.php">Add Shoes</a></li>
-            <li><a href="./addSocks.php">Add Socks</a></li>
-            <li><a href="./addUsers.php">Add Users</a></li>
-        </ul>
-    </nav>
-</div>
+    <div class="navbar">
+        <h2>Welcome <?php echo $_SESSION["username"] ?></h2>
+        <nav>
+            <ul>
+                <li><a href="./dashboard.php">Dashboard</a></li>
+                <li><a href="./userDetails.php">User Details</a></li>
+                <li><a href="./viewProfile.php">View Profile</a></li>
+                <li><a href="./editProfile.php">Edit Profile</a></li>
+                <li><a href="../../Controllers/logoutController.php">Logout</a></li>
+                <li><a href="./shoeDetails.php">Shoes Details</a></li>
+                <li><a href="./sockDetails.php">Socks Details</a></li>
+                <li><a href="./shoeTypeDetails.php">Shoe Type Details</a></li>
+                <li><a href="./addShoe.php">Add Shoes</a></li>
+                <li><a href="./addSocks.php">Add Socks</a></li>
+                <li><a href="./addShoeType.php">Add Shoe Type</a></li>
+                <li><a href="./addUsers.php">Add Users</a></li>
+            </ul>
+        </nav>
+    </div>
 
 </body>
 

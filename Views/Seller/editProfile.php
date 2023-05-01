@@ -46,7 +46,8 @@ $user = getUser($id);
                 </tr>
                 <tr>
                     <td><label for="Gender">Gender: </label></td>
-                    <td><input type="radio" name="gender" value="Male">Male <input type="radio" name="gender" value="Female"> Female </td>
+                    <td><input type="radio" name="gender" value="Male">Male <input type="radio" name="gender"
+                            value="Female"> Female </td>
                 </tr>
                 <tr>
                     <td align="center" colspan="2"><input type="submit" name="submit" value="Save"></td>
@@ -54,11 +55,5 @@ $user = getUser($id);
             </table>
         </fieldset>
         <br>
-        <a href="Dashboard.php">
-            <h2>Dashboard</h2>
-        </a><br>
     </form>
 </div>
-
-
-<?php include "../CommonLayer/footer.php"; ?>
