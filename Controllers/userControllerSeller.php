@@ -144,7 +144,48 @@ if (isset($_POST['addUser'])) {
 }
 
 if (isset($_POST['update'])) {
-    // TODO: validation
+    if (empty($_POST['name'])) {
+        $error_name = "Name is required";
+        $hasError = true;
+    } else {
+        $name = $_POST['name'];
+    }
+    if (empty($_POST['email'])) {
+        $error_email = "Email is required";
+        $hasError = true;
+    } else {
+        $email = $_POST['email'];
+    }
+    if (empty($_POST['username'])) {
+        $error_username = "Username is required";
+        $hasError = true;
+    } else {
+        $username = $_POST['username'];
+    }
+    if (empty($_POST['password'])) {
+        $error_password = "Password is required";
+        $hasError = true;
+    } else {
+        $password = $_POST['password'];
+    }
+    if (empty($_POST['mobile'])) {
+        $error_mobile = "Mobile is required";
+        $hasError = true;
+    } else {
+        $mobile = $_POST['mobile'];
+    }
+    if (empty($_POST['address'])) {
+        $error_address = "Address is required";
+        $hasError = true;
+    } else {
+        $address = $_POST['address'];
+    }
+    if (!isset($_POST["gender"])) {
+        $error_gender = "Gender Required.";
+        $hasError = true;
+    } else {
+        $gender = $_POST["gender"];
+    }
     $u_id = $_POST['u_id'];
     $name = $_POST['name'];
     $email = $_POST['email'];

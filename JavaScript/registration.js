@@ -13,18 +13,6 @@
             return true;
         }
 
-        function validateHobbies() {
-            var checked = false;
-            var hobbies = document.getElementsByName("hobbies[]");
-            for (var i = 0; i < hobbies.length; i++) {
-                if (hobbies[i].checked) {
-                    checked = true;
-                    break;
-                }
-            }
-            return checked;
-        }
-
         function validate() {
             refresh();
             if (get("name").value == "") {
@@ -48,23 +36,35 @@
                 hasError = true;
                 get("error_password").innerHTML = "*Password Must be greater than 5";
             }
+            if(get("email").value == ""){
+                hasError = true;
+                get("error_email").innerHTML = "*Email Required";
+            }
+            if(get("mobile").value == ""){
+                hasError = true;
+                get("error_mobile").innerHTML = "*Mobile Required";
+            }
+            if(get("confirm_password").value == ""){
+                hasError = true;
+                get("error_confirm_password").innerHTML = "*Confirm Password Required";
+            }
+            if(get("confirm_password").value != get("password").value){
+                hasError = true;
+                get("error_confirm_password").innerHTML = "*Password and Confirm Password must be same";
+            }
 
             if (!validateGender()) {
                 hasError = true;
                 get("error_gender").innerHTML = "*Gender Required";
-            }
-            if (!validateHobbies()) {
-                hasError = true;
-                get("error_hobbies").innerHTML = "*Hobbies Required";
             }
 
             if (get("profession").selectedIndex == 0) {
                 hasError = true;
                 get("error_profession").innerHTML = "*Profession Required";
             }
-            if (get("Bio").value == "") {
+            if (get("address").value == "") {
                 hasError = true;
-                get("error_bio").innerHTML = "*Bio Required";
+                get("error_address").innerHTML = "*Bio Required";
             }
 
             return !hasError;
@@ -74,9 +74,10 @@
             hasError = false;
             get("error_name").innerHTML = "";
             get("error_username").innerHTML = "";
+            get("error_email").innerHTML = "";
+            get("error_mobile").innerHTML = "";
+            get("error_confirm_password").innerHTML = "";
+            get("error_address").innerHTML = "";
             get("error_password").innerHTML = "";
             get("error_gender").innerHTML = "";
-            get("error_hobbies").innerHTML = "";
-            get("error_profession").innerHTML = "";
-            get("error_bio").innerHTML = "";
         }

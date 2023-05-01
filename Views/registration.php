@@ -1,6 +1,6 @@
-<?php 
-    include '../Controllers/registrationController.php';
-    include_once './homeNav.php';
+<?php
+include '../Controllers/registrationController.php';
+include_once './homeNav.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,7 +88,7 @@
 <body>
 
     <div class="container">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post" onsubmit="return validate()" enctype="multipart/form-data">
             <fieldset>
                 <h2 id="sign-up">Sign-up</h2>
                 <h3 style="color:red"><?php echo $db_error; ?></h3>
@@ -101,8 +101,8 @@
                     </tr>
                     <tr>
                         <td><label for="Email">Email: </label></td>
-                        <td><input type="email" onfocusout="checkEmail(this)" name="email" placeholder="Email"
-                                value="<?php echo $email; ?>"></td>
+                        <td><input type="email" onfocusout="checkEmail(this)" name="email" id="email"
+                                placeholder="Email" value="<?php echo $email; ?>"></td>
                         <td><span style="color:red" id="error_email"><?php echo $error_email; ?></span></td>
                     </tr>
                     <tr>
@@ -110,25 +110,25 @@
                         <td><input type="text" id="mobile" name="mobile" placeholder="Mobile"
                                 value="<?php echo $mobile; ?>">
                         </td>
-                        <td><span style="color:red"><?php echo $error_mobile ; ?></span></td>
+                        <td><span style="color:red"><?php echo $error_mobile; ?></span></td>
                     </tr>
                     <tr>
                         <td><label for="Username">Username: </label></td>
-                        <td><input type="text" onfocusout="checkUsername(this)" name="username" placeholder="Username"
-                                value="<?php echo $username; ?>"></td><br>
+                        <td><input type="text" onfocusout="checkUsername(this)" id="username" name="username"
+                                placeholder="Username" value="<?php echo $username; ?>"></td><br>
                         <td><span style="color:red" id="error_username"><?php echo $error_username; ?></span></td>
                     </tr>
                     <tr>
                         <td><label for="Password">Password: </label></td>
-                        <td><input type="password" name="password" placeholder="Password"
+                        <td><input type="password" name="password" id="password" placeholder="Password"
                                 value="<?php echo $password; ?>">
                         </td>
                         <td><span style="color:red"><?php echo $error_password; ?></span></td>
                     </tr>
                     <tr>
                         <td><label for="Confirm Password">Confirm Password: </label></td>
-                        <td><input type="password" name="confirm_password" placeholder="Confirm Password"
-                                value="<?php echo $confirm_password; ?>"></td>
+                        <td><input type="password" name="confirm_password" id="confirm_password"
+                                placeholder="Confirm Password" value="<?php echo $confirm_password; ?>"></td>
                         <td><span style="color:red"><?php echo $error_confirm_password; ?></span></td>
                     </tr>
                     <tr>
@@ -140,7 +140,8 @@
                     </tr>
                     <tr>
                         <td><label for="Address">Address: </label></td>
-                        <td><input type="text" name="address" placeholder="Address" value="<?php echo $address; ?>">
+                        <td><input type="text" id="address" name="address" placeholder="Address"
+                                value="<?php echo $address; ?>">
                         </td>
                         <td><span style="color:red"><?php echo $error_address; ?></span></td>
                     </tr>
@@ -160,7 +161,10 @@
     <!-- <script src="../JavaScript/signup.js">
     </script>
     <script src="../JavaScript/email.js">
+    </script>
+    <script src="../JavaScript/username.js">
     </script> -->
+    <script src="../JavaScript/registration.js"></script>
 </body>
 
 </html>
