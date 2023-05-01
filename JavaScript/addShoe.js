@@ -1,76 +1,53 @@
+   console.log("addShoe.js");
+   var hasError = false;
 
-    function validateForm() {
-        var name = document.getElementById("name").value;
-        var category = document.getElementById("category").value;
-        var price = document.getElementById("price").value;
-        var quantity = document.getElementById("quantity").value;
-        var size = document.getElementById("size").value;
-        var color = document.getElementById("color").value;
-        var rating = document.getElementById("rating").value;
-        var description = document.getElementById("text").value;
-        var shoe_img = document.getElementById("shoe_img").value;
-        var shoe_id = document.getElementById("shoe_id").value;
-
-        // Check if name field is empty
-        if (name == "") {
-            alert("Please enter a shoe name");
-            return false;
-        }
-
-        // Check if category field is empty
-        if (category == "") {
-            alert("Please enter a category");
-            return false;
-        }
-
-        // Check if price field is empty and if it's a valid number
-        if (price == "" || isNaN(price)) {
-            alert("Please enter a valid price");
-            return false;
-        }
-
-        // Check if quantity field is empty and if it's a valid number
-        if (quantity == "" || isNaN(quantity)) {
-            alert("Please enter a valid quantity");
-            return false;
-        }
-
-        // Check if size field is empty and if it's a valid number
-        if (size == "" || isNaN(size)) {
-            alert("Please enter a valid size");
-            return false;
-        }
-
-        // Check if color field is empty
-        if (color == "") {
-            alert("Please enter a color");
-            return false;
-        }
-
-        // Check if rating field is empty and if it's a valid number
-        if (rating == "" || isNaN(rating)) {
-            alert("Please enter a valid rating");
-            return false;
-        }
-
-        // Check if description field is empty
-        if (description == "") {
-            alert("Please enter a description");
-            return false;
-        }
-
-        // Check if shoe image field is empty
-        if (shoe_img == "") {
-            alert("Please select a shoe image");
-            return false;
-        }
-
-        // Check if shoe type is selected
-        if (shoe_id == "") {
-            alert("Please select a shoe type");
-            return false;
-        }
-
-        return true;
+    function get(id) {
+        return document.getElementById(id);
     }
 
+    function addShoe() {
+        console.log("addShoe()");
+        refresh();
+        if (get("name").value == "") {
+            hasError = true;
+            get("error_shoe_name").innerHTML = "*Shoe Name Required";
+        }
+        if (get("category").value == "") {
+            hasError = true;
+            get("error_category").innerHTML = "*Category Required";
+        }
+        if (get("price").value == "") {
+            hasError = true;
+            get("error_price").innerHTML = "*Price Required";
+        }
+        if (get("quantity").value == "") {
+            hasError = true;
+            get("error_quantity").innerHTML = "*Quantity Required";
+        }
+        if (get("size").value == "") {
+            hasError = true;
+            get("error_size").innerHTML = "*size Required";
+        }
+        if (get("color").value == "") {
+            hasError = true;
+            get("error_color").innerHTML = "*Confirm size Required";
+        }
+        if (get("text").value == "") {
+            hasError = true;
+            get("error_bio").innerHTML = "*Description Required";
+        }
+
+        return !hasError;
+    }
+
+    function refresh() {
+        hasError = false;
+        get("error_name").innerHTML = "";
+        get("error_category").innerHTML = "";
+        get("error_size").innerHTML = "";
+        get("error_color").innerHTML = "";
+        get("error_gender").innerHTML = "";
+        get("error_price").innerHTML = "";
+        get("error_quantity").innerHTML = "";
+        get("error_text").innerHTML = "";
+    }

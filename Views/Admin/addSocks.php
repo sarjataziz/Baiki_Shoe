@@ -1,11 +1,11 @@
-<?php 
-    session_start();
-    if(!isset($_SESSION['username'])){
-        header("Location: login.php");
-    }
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+}
 
-    include '../../Controllers/socksController.php';
-    include './adminNav.php';
+include '../../Controllers/socksController.php';
+include './adminNav.php';
 ?>
 
 <!DOCTYPE html>
@@ -75,6 +75,47 @@
             </fieldset>
         </form>
     </div>
+    <script>
+    function validateForm() {
+        var sockName = document.forms["sockForm"]["sock_name"].value;
+        var color = document.forms["sockForm"]["color"].value;
+        var material = document.forms["sockForm"]["material"].value;
+        var size = document.forms["sockForm"]["size"].value;
+        var price = document.forms["sockForm"]["price"].value;
+        var quantity = document.forms["sockForm"]["quantity"].value;
+        var sockImg = document.forms["sockForm"]["sock_img"].value;
+        var errors = [];
+
+        if (sockName == "") {
+            errors.push("Sock Name must be filled out");
+        }
+        if (color == "") {
+            errors.push("Color must be filled out");
+        }
+        if (material == "") {
+            errors.push("Material must be filled out");
+        }
+        if (size == "") {
+            errors.push("Size must be filled out");
+        }
+        if (price == "") {
+            errors.push("Price must be filled out");
+        }
+        if (quantity == "") {
+            errors.push("Quantity must be filled out");
+        }
+        if (sockImg == "") {
+            errors.push("Image must be uploaded");
+        }
+
+        if (errors.length > 0) {
+            var errorString = errors.join("<br>");
+            document.getElementById("error_message").innerHTML = errorString;
+            return false;
+        }
+    }
+    </script>
+
 
 </body>
 

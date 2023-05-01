@@ -1,6 +1,6 @@
 <?php
 session_start();
-//include $_SERVER['DOCUMENT_ROOT'] . '/Bshop' . '/Models/database_config.php';
+//include $_SERVER['DOCUMENT_ROOT'] . '/WebTech/Project' . '/Models/database_config.php';
 include __DIR__ . '/../Models/database_config.php';
 
 

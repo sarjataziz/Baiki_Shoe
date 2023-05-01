@@ -1,8 +1,8 @@
-<?php 
-    //include '../Controllers/userController.php';
-    include '../Controllers/registrationController.php';
-    include_once './homeNav.php';
-    
+<?php
+//include '../Controllers/userController.php';
+include '../Controllers/registrationController.php';
+include_once './homeNav.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -83,17 +83,41 @@
 
     <div class="container">
 
-        <form method="POST" action="">
+        <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var valid = true;
+
+            if (username == "") {
+                document.getElementById("error_username").innerHTML = "Please enter a username";
+                valid = false;
+            } else {
+                document.getElementById("error_username").innerHTML = "";
+            }
+
+            if (password == "") {
+                document.getElementById("error_password").innerHTML = "Please enter a password";
+                valid = false;
+            } else {
+                document.getElementById("error_password").innerHTML = "";
+            }
+
+            return valid;
+        }
+        </script>
+
+        <form method="POST" action="" onsubmit="return validateForm()">
             <table align="center">
                 <tr>
                     <td><label>Username: </label></td>
-                    <td><input type="text" name="username" placeholder="Username"></td>
-                    <td><span style="color:red"><?php echo $error_username; ?></span></td>
+                    <td><input type="text" id="username" name="username" placeholder="Username"></td>
+                    <td><span style="color:red" id="error_username"><?php echo $error_username; ?></span></td>
                 </tr>
                 <tr>
                     <td><label>Password: </label></td>
-                    <td><input type="password" name="password" placeholder="Password"></td>
-                    <td><span style="color:red"><?php echo $error_password; ?></span></td>
+                    <td><input type="password" id="password" name="password" placeholder="Password"></td>
+                    <td><span style="color:red" id="error_password"><?php echo $error_password; ?></span></td>
                 </tr>
                 <tr>
                     <td colspan="3" align="center"><input type="submit" name="login" value="Submit"></td>
@@ -108,8 +132,8 @@
         </form>
 
 
-    </div>
 
+    </div>
 </body>
 
 </html>

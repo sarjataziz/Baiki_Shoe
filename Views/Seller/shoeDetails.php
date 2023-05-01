@@ -25,7 +25,9 @@ $shoeType = getAllShoe();
     <div class="container">
         <h3 align="center">Shoe Details</h3>
 
-        <table align="center">
+
+        <input type="text" id="search-input" placeholder="Search for shoes">
+        <table id="shoe-table" align="center">
             <thead>
                 <tr>
                     <th>Shoe ID</th>
@@ -45,7 +47,7 @@ $shoeType = getAllShoe();
                 <?php
                 $i = 1;
                 foreach ($shoeType as $shoe) {
-                    echo "<tr>";
+                    echo "<tr class='shoe-row'>";
                     echo "<td>" . $i . "</td>";
                     echo "<td><img src='" . $shoe['shoe_img'] . "' width='50px' height='50px'></td>";
                     echo "<td>" . $shoe['shoe_name'] . "</td>";
@@ -55,14 +57,34 @@ $shoeType = getAllShoe();
                     echo "<td>" . $shoe['description'] . "</td>";
                     echo "<td>" . $shoe['rating'] . "</td>";
                     echo "<td>" . $shoe['size'] . "</td>";
-                    echo "<td><a href='editShoes.php?id=" . $shoe['shoe_id'] . "'>Edit</a></td>";
-                    echo "<td><a href='deleteShoe.php?id=" . $shoe['shoe_id'] . "'>Delete</a></td>";
+                    echo "<td><a href='editShoes.php?shoe_id=" . $shoe['shoe_id'] . "'>Edit</a></td>";
+                    echo "<td><a href='deleteShoe.php?shoe_id=" . $shoe['shoe_id'] . "'>Delete</a></td>";
                     echo "</tr>";
                     $i++;
                 }
                 ?>
             </tbody>
         </table>
+        <script>
+        const searchInput = document.getElementById('search-input');
+        const shoeTable = document.getElementById('shoe-table');
+
+        searchInput.addEventListener('keyup', function() {
+            const searchText = searchInput.value.toLowerCase();
+
+            const shoeRows = shoeTable.querySelectorAll('.shoe-row');
+            shoeRows.forEach(function(row) {
+                const name = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                const category = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+
+                if (name.includes(searchText) || category.includes(searchText)) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+        </script>
     </div>
 </body>
 

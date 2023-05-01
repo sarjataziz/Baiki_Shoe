@@ -1,10 +1,10 @@
-<?php 
-    session_start();
-    if(!isset($_SESSION["username"])){
-        header("Location: ../login.php");
-    }
-    require_once '../../Controllers/shoeTypeController.php'; 
-    include './sellerNav.php';
+<?php
+session_start();
+if (!isset($_SESSION["username"])) {
+    header("Location: ../login.php");
+}
+require_once '../../Controllers/shoeTypeController.php';
+include './sellerNav.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,19 +36,37 @@
                 <?php
                 $i = 1;
                 $shoes = getAllShoeTypes();
-                foreach($shoes as $ShoeType){
+                foreach ($shoes as $ShoeType) {
                     echo "<tr>";
-                        echo "<td>$i</td>";
-                        echo "<td>".$ShoeType["shoes_type"]."</td>";
-                        echo '<td><a href="editShoeType.php?id='.$ShoeType["shoe_type_id"].'">Edit</a></td>';
-                        echo '<td><a href="deleteShoeType.php?id='.$ShoeType["shoe_type_id"].'">Delete</a></td>';
+                    echo "<td>$i</td>";
+                    echo "<td>" . $ShoeType["shoes_type"] . "</td>";
+                    echo '<td><a href="editShoeType.php?id=' . $ShoeType["shoe_type_id"] . '">Edit</a></td>';
+                    echo '<td><a href="deleteShoeType.php?id=' . $ShoeType["shoe_type_id"] . '">Delete</a></td>';
                     echo "</tr>";
                     $i++;
                 }
-            ?>
+                ?>
             </tbody>
         </table>
     </div>
+    <script>
+    const searchInput = document.querySelector('#searchInput');
+    const shoeTable = document.querySelector('table tbody');
+    const shoeTableRows = shoeTable.getElementsByTagName('tr');
+
+    searchInput.addEventListener('input', () => {
+        const searchValue = searchInput.value.toLowerCase();
+        for (let i = 0; i < shoeTableRows.length; i++) {
+            const row = shoeTableRows[i];
+            const name = row.getElementsByTagName('td')[1].textContent.toLowerCase();
+            if (name.includes(searchValue)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        }
+    });
+    </script>
 </body>
 
 </html>

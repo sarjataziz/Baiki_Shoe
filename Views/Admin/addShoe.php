@@ -25,7 +25,7 @@ $shoes = getAllShoeTypes();
     <div class="container">
         <h1 align="center">Add Shoes</h1>
         <h5 style="color: red;"><?php echo $db_error; ?></h5>
-        <form action="" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <form action="" method="post" enctype="multipart/form-data" onsubmit="return addShoe()">
 
             <fieldset>
                 <legend>Details</legend>
@@ -105,7 +105,6 @@ $shoes = getAllShoeTypes();
         </form>
     </div>
     <script src="../../JavaScript/addShoe.js"></script>
-
 </body>
 
 </html>

@@ -103,7 +103,7 @@ $shoes = getAllShoeTypes();
             </fieldset>
         </form>
     </div>
-
+    <script src="../../JavaScript/addShoe.js"></script>
 </body>
 
 </html>
