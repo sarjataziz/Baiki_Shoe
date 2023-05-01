@@ -1,83 +1,102 @@
 
-        var hasError = false;
+function validate() {
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var mobile = document.getElementById("mobile").value;
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+  var confirm_password = document.getElementById("confirm_password").value;
+  var gender = document.getElementsByName("gender");
+  var address = document.getElementById("address").value;
+  var profile_picture = document.getElementById("profile_picture").value;
 
-        function get(id) {
-            return document.getElementById(id);
-        }
+  // Name validation
+  if (name == "") {
+    alert("Please enter your name.");
+    return false;
+  }
 
-        function validateGender() {
-            var gn = document.querySelector('input[name="gender"]:checked');
-            if (gn == null) {
-                return false;
-            }
-            return true;
-        }
+  // Email validation
+  if (email == "") {
+    alert("Please enter your email.");
+    return false;
+  }
 
-        function validate() {
-            refresh();
-            if (get("name").value == "") {
-                hasError = true;
-                get("error_name").innerHTML = "*Name Required";
-            } else if (get("name").value.length <= 2) {
-                hasError = true;
-                get("error_name").innerHTML = "*Name Must be greater than 2";
-            }
-            if (get("username").value == "") {
-                hasError = true;
-                get("error_username").innerHTML = "*Username Required";
-            } else if (get("username").value.length <= 1) {
-                hasError = true;
-                get("error_username").innerHTML = "*Username Must be greater than 1";
-            }
-            if (get("password").value == "") {
-                hasError = true;
-                get("error_password").innerHTML = "*Password Required";
-            } else if (get("password").value.length <= 5) {
-                hasError = true;
-                get("error_password").innerHTML = "*Password Must be greater than 5";
-            }
-            if(get("email").value == ""){
-                hasError = true;
-                get("error_email").innerHTML = "*Email Required";
-            }
-            if(get("mobile").value == ""){
-                hasError = true;
-                get("error_mobile").innerHTML = "*Mobile Required";
-            }
-            if(get("confirm_password").value == ""){
-                hasError = true;
-                get("error_confirm_password").innerHTML = "*Confirm Password Required";
-            }
-            if(get("confirm_password").value != get("password").value){
-                hasError = true;
-                get("error_confirm_password").innerHTML = "*Password and Confirm Password must be same";
-            }
+  // Mobile validation
+  if (mobile == "") {
+    alert("Please enter your mobile number.");
+    return false;
+  }
 
-            if (!validateGender()) {
-                hasError = true;
-                get("error_gender").innerHTML = "*Gender Required";
-            }
+  // Username validation
+  if (username == "") {
+    alert("Please enter a username.");
+    return false;
+  }
 
-            if (get("profession").selectedIndex == 0) {
-                hasError = true;
-                get("error_profession").innerHTML = "*Profession Required";
-            }
-            if (get("address").value == "") {
-                hasError = true;
-                get("error_address").innerHTML = "*Bio Required";
-            }
+  // Password validation
+  if (password == "") {
+    alert("Please enter a password.");
+    return false;
+  }
 
-            return !hasError;
-        }
+  // Confirm password validation
+  if (confirm_password == "") {
+    alert("Please confirm your password.");
+    return false;
+  }
+  if (password != confirm_password) {
+    alert("Password and confirm password do not match.");
+    return false;
+  }
 
-        function refresh() {
-            hasError = false;
-            get("error_name").innerHTML = "";
-            get("error_username").innerHTML = "";
-            get("error_email").innerHTML = "";
-            get("error_mobile").innerHTML = "";
-            get("error_confirm_password").innerHTML = "";
-            get("error_address").innerHTML = "";
-            get("error_password").innerHTML = "";
-            get("error_gender").innerHTML = "";
-        }
+  // Gender validation
+  var gender_selected = false;
+  for (var i = 0; i < gender.length; i++) {
+    if (gender[i].checked) {
+      gender_selected = true;
+      break;
+    }
+  }
+  if (!gender_selected) {
+    alert("Please select your gender.");
+    return false;
+  }
+
+  // Address validation
+  if (address == "") {
+    alert("Please enter your address.");
+    return false;
+  }
+
+  // Profile picture validation
+  if (profile_picture == "") {
+    alert("Please upload your profile picture.");
+    return false;
+  }
+
+  return true;
+}
+
+// Email validation using regular expression
+function checkEmail(input) {
+  var email = input.value;
+  var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (regex.test(email)) {
+    document.getElementById("error_email").innerHTML = "";
+  } else {
+    document.getElementById("error_email").innerHTML = "Please enter a valid email address.";
+  }
+}
+
+// Username validation using regular expression
+function checkUsername(input) {
+  var username = input.value;
+  var regex = /^[a-zA-Z0-9_]{4,20}$/;
+  if (regex.test(username)) {
+    document.getElementById("error_username").innerHTML = "";
+  } else {
+    document.getElementById("error_username").innerHTML = "Username must be 4-20 characters long and can only contain letters, numbers, and underscores.";
+  }
+}
+

@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../Controllers/registrationController.php';
+require_once '../Controllers/registrationController.php';
 
 $email = $_GET['email'];
 
@@ -9,4 +9,3 @@ if (validateEmail($email)) {
 } else {
     echo "false";
 }
-?>

@@ -133,9 +133,10 @@ include_once './homeNav.php';
                     </tr>
                     <tr>
                         <td><label for="Gender">Gender: </label></td>
-                        <td><input type="radio" name="gender" value="Male"
-                                <?php if ($gender == "Male") echo "checked"; ?>>Male <input type="radio" name="gender"
-                                value="Female" <?php if ($gender == "Female") echo "checked"; ?>> Female </td>
+                        <td><input type="radio" id="male" name="gender" value="Male"
+                                <?php if ($gender == "Male") echo "checked"; ?>>Male <input type="radio" id="female"
+                                name="gender" value="Female" <?php if ($gender == "Female") echo "checked"; ?>> Female
+                        </td>
                         <td><span style="color:red"><?php echo $error_gender; ?></span></td>
                     </tr>
                     <tr>
@@ -158,12 +159,12 @@ include_once './homeNav.php';
         </form>
 
     </div>
-    <!-- <script src="../JavaScript/signup.js">
+    <script src="../JavaScript/signup.js">
     </script>
     <script src="../JavaScript/email.js">
     </script>
     <script src="../JavaScript/username.js">
-    </script> -->
+    </script>
     <script src="../JavaScript/registration.js"></script>
 </body>
 
