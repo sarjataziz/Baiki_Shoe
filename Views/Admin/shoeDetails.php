@@ -8,6 +8,7 @@ require_once '../../Controllers/shoeTypeController.php';
 include './adminNav.php';
 
 $shoeType = getAllShoe();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +25,8 @@ $shoeType = getAllShoe();
 
     <div class="container">
         <h3 align="center">Shoe Details</h3>
+
+        <input type="text" id="livesearch" placeholder="Search for shoes">
 
         <input type="text" id="search-input" placeholder="Search for shoes">
         <table id="shoe-table" align="center">
@@ -83,6 +86,26 @@ $shoeType = getAllShoe();
                 }
             });
         });
+        </script>
+        <script>
+        function showResult(str) {
+            if (str.length == 0) {
+                document.getElementById("livesearch").innerHTML = "";
+                document.getElementById("livesearch").style.border = "0px";
+                return;
+            }
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("livesearch").innerHTML = this.responseText;
+                    document.getElementById("livesearch").style.border = "1px solid #A5ACB2";
+                } else if (this.readyState == 4) {
+                    console.log("Error: " + this.statusText);
+                }
+            };
+            xmlhttp.open("GET", "shoeSearch.php?q=" + str, true);
+            xmlhttp.send();
+        }
         </script>
     </div>
 </body>

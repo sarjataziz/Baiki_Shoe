@@ -7,7 +7,16 @@ include __DIR__ . '/../Models/database_config.php';
 $shoe_name = $category = $price = $quantity = $description = $shoe_img = $shoe_type = $size = $color = $rating = "";
 $error_shoe_name = $error_category = $error_price = $error_quantity = $error_description = $error_shoe_img = $error_shoe_type = $error_size = $error_color = $error_rating = "";
 $db_error = "";
-
+// function checkShoes($shoe)
+// {
+//     $query = "select * from shoe where shoe_name='$shoe'";
+//     $result = get($query);
+//     if (count($result) > 0) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
 function insertShoe($shoe_name, $category, $quantity, $fk_shoe_type, $color, $shoe_img, $price, $rating, $size, $description)
 {
     $query = "insert into shoe values(NULL, '$shoe_name', '$category', '$quantity', '$fk_shoe_type', '$color', '$shoe_img', '$price', '$rating', '$size', '$description')";

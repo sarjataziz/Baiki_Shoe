@@ -130,9 +130,6 @@ include_once './homeNav.php';
                 </tr>
             </table>
         </form>
-
-
-
     </div>
 </body>
 

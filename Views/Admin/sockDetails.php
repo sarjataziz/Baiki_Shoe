@@ -8,7 +8,8 @@ include './adminNav.php';
 //$message = $_GET["msg"];
 ?>
 <!DOCTYPE html>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <html lang="en">
 
 <head>
@@ -20,7 +21,7 @@ include './adminNav.php';
 
 <body>
     <h2>Welcome <?php echo $_SESSION["username"] ?></h2><br>
-
+    <input type="text" id="livesearch" placeholder="Search for shoes">
     <input type="text" id="searchInput" placeholder="Search by sock name">
     <table class="table table-bordered table-striped" id="sockTable">
         <thead>
@@ -58,24 +59,44 @@ include './adminNav.php';
         </tbody>
     </table>
     <script>
-        const searchInput = document.querySelector('#searchInput');
-        const sockTable = document.querySelector('#sockTable');
+    const searchInput = document.querySelector('#searchInput');
+    const sockTable = document.querySelector('#sockTable');
 
-        searchInput.addEventListener('input', () => {
-            const searchValue = searchInput.value.toLowerCase();
+    searchInput.addEventListener('input', () => {
+        const searchValue = searchInput.value.toLowerCase();
 
-            // Filter the sock table rows based on the search value
-            const rows = sockTable.querySelectorAll('tbody tr');
-            rows.forEach(row => {
-                const name = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+        // Filter the sock table rows based on the search value
+        const rows = sockTable.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            const name = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
 
-                if (name.includes(searchValue)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
+            if (name.includes(searchValue)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
         });
+    });
+    </script>
+    <script>
+    function showResult(str) {
+        if (str.length == 0) {
+            document.getElementById("livesearch").innerHTML = "";
+            document.getElementById("livesearch").style.border = "0px";
+            return;
+        }
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("livesearch").innerHTML = this.responseText;
+                document.getElementById("livesearch").style.border = "1px solid #A5ACB2";
+            } else if (this.readyState == 4) {
+                console.log("Error: " + this.statusText);
+            }
+        };
+        xmlhttp.open("GET", "sockShoes.php?q=" + str, true);
+        xmlhttp.send();
+    }
     </script>
     </div>
 </body>
