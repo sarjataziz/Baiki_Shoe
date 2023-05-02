@@ -98,6 +98,41 @@ include_once '../Admin/adminNav.php';
     <script src="./../../JavaScript/registration.js">
 
     </script>
+    <script>
+    function checkEmail(input) {
+        var email = input.value;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+                document.getElementById("error_email").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "./../../Controllers/registrationController.php?email=" + email, true);
+        xhttp.send();
+    }
+    </script>
+    <script>
+    function get(id) {
+        return document.getElementById(id);
+    }
+
+    function checkUsername(e) {
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "checkUsername.php?username=" + e.value, true);
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if (this.responseText == "valid") {
+                    get("error_username").innerHTML = "Username not available";
+                } else {
+                    get("error_username").innerHTML = "";
+                }
+            }
+        };
+        xhr.send();
+    }
+    </script>
 
 </body>
 
